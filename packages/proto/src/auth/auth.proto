@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package auth;
+
+import "google/protobuf/wrappers.proto";
+
+service AuthService {
+    rpc VerifyToken(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {}
+    rpc GenerateToken(OAuthProfile) returns (Token) {}
+    rpc GetOAuthProfile(OAuthRequest) returns (OAuthProfile) {}
+}
+
+message Token {
+    string accessToken = 1;
+    string refreshToken = 2;
+}
+
+message TokenPayload {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    Provider provider = 4;
+    uint64 iat = 5;
+    uint64 exp = 6;
+}
+
+
+enum Provider {
+    GOOGLE = 0;
+    GITHUB = 1;
+    KAKAO = 2;
+}
+
+message OAuthRequest {
+    string code = 1;
+    string redirect = 2;
+    string callback = 3;
+    Provider provider = 4;
+}
+
+message OAuthProfile {
+  Provider provider = 1;
+  string providerId = 2;
+  string email = 3;
+  string name = 4;
+  string profileImage = 5;
+}
+
+message OAuthState {
+    string redirect = 1;
+    string callback = 2;
+    Provider provider = 3;
+}
