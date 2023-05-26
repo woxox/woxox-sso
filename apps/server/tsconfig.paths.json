@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "~modules/*": [
+                "src/modules/*"
+            ],
+            "~utils/*": [
+                "src/utils/*"
+            ],
+            "~src/*": [
+                "src/*"
+            ],
+            "passport-kakao": [
+                "@types/passport-kakao.d.ts"
+            ]
+        }
+    }
+}
