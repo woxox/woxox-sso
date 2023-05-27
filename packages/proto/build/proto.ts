@@ -45,7 +45,7 @@ const buildAllProto = () => {
   //   if (result.error) console.log(result.stderr.toString());
   // });
 
-  const result = execute("yarn", ["build:protoc"], {
+  const result = execute("pnpm", ["build:protoc"], {
     cwd: join(__dirname, ".."),
   });
   if (result.error) console.log(result.stderr.toString());
